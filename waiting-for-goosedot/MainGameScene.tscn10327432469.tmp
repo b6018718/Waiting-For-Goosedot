@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dljc6sorr46hk"]
+[gd_scene load_steps=13 format=3 uid="uid://dljc6sorr46hk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_lhppi"]
 [ext_resource type="Script" uid="uid://bbhevr7asph16" path="res://main_game_scene.gd" id="1_rlhik"]
@@ -21,11 +21,6 @@ sky = SubResource("Sky_dbkhw")
 tonemap_mode = 2
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_holyq"]
-vertices = PackedVector3Array(3.22, 1, 2.4, 3.22, 1, 4.65, 5.22, 1, 4.65, 5.22, 1, -4.6, -5.28, 1, 4.65, -2.53, 1, 4.65, -2.53, 1, 2.4, -5.28, 1, -4.6)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(0, 6, 3), PackedInt32Array(3, 6, 7)]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_holyq"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_fgfqk"]
 default_font_size = 32
@@ -50,7 +45,6 @@ use_collision = true
 transform = Transform3D(6.8, 0, 0, 0, 1, 0, 0, 0, 10.2, 0, 0, 0)
 use_collision = true
 size = Vector3(1.7, 1, 1)
-material = SubResource("StandardMaterial3D_holyq")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 2.4, 3.5)

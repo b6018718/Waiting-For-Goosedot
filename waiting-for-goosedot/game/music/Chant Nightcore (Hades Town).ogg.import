@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mpwpe04aulyf"
+path="res://.godot/imported/Chant Nightcore (Hades Town).ogg-189735e0f32ebca6cbc39fbec8c19fe5.oggvorbisstr"
+
+[deps]
+
+source_file="res://game/music/Chant Nightcore (Hades Town).ogg"
+dest_files=["res://.godot/imported/Chant Nightcore (Hades Town).ogg-189735e0f32ebca6cbc39fbec8c19fe5.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq8xyo3uhxl6j"]
+
+[ext_resource type="AudioStream" uid="uid://mpwpe04aulyf" path="res://game/music/Chant Nightcore (Hades Town).ogg" id="1_41a6t"]
+
+[node name="MusicalMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_41a6t")
+volume_db = -10.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dljc6sorr46hk"]
+[gd_scene load_steps=11 format=3 uid="uid://dljc6sorr46hk"]
 
 [ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_lhppi"]
 [ext_resource type="Script" uid="uid://bbhevr7asph16" path="res://main_game_scene.gd" id="1_rlhik"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://bqrn845jew2m2" path="res://game/npcs/asked_question.tscn" id="3_holyq"]
 [ext_resource type="Script" uid="uid://blrs3t0ggqj3m" path="res://game/ui/dialog.gd" id="4_ccfle"]
 [ext_resource type="Theme" uid="uid://kafrwpif8e5j" path="res://game/DefaultTheme.tres" id="5_4gwvo"]
-[ext_resource type="PackedScene" uid="uid://cq8xyo3uhxl6j" path="res://game/music/musical_music.tscn" id="7_holyq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_25807"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -19,13 +18,6 @@ sky_material = SubResource("ProceduralSkyMaterial_25807")
 background_mode = 2
 sky = SubResource("Sky_dbkhw")
 tonemap_mode = 2
-
-[sub_resource type="NavigationMesh" id="NavigationMesh_holyq"]
-vertices = PackedVector3Array(3.22, 1, 2.4, 3.22, 1, 4.65, 5.22, 1, 4.65, 5.22, 1, -4.6, -5.28, 1, 4.65, -2.53, 1, 4.65, -2.53, 1, 2.4, -5.28, 1, -4.6)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(0, 6, 3), PackedInt32Array(3, 6, 7)]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_holyq"]
-albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Theme" id="Theme_fgfqk"]
 default_font_size = 32
@@ -40,35 +32,31 @@ environment = SubResource("Environment_y61ny")
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, -7, 5.6, 0)
 shadow_enabled = true
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_holyq")
-
-[node name="LevelGeometry" type="CSGCombiner3D" parent="NavigationRegion3D"]
+[node name="CombinerGeometry" type="CSGCombiner3D" parent="."]
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry"]
+[node name="CSGBox3D" type="CSGBox3D" parent="CombinerGeometry"]
 transform = Transform3D(6.8, 0, 0, 0, 1, 0, 0, 0, 10.2, 0, 0, 0)
 use_collision = true
 size = Vector3(1.7, 1, 1)
-material = SubResource("StandardMaterial3D_holyq")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/LevelGeometry"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="CombinerGeometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.35, 2.4, 3.5)
 size = Vector3(5.1, 3.8, 1)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="NavigationRegion3D/LevelGeometry/CSGBox3D2"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CombinerGeometry/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, -4.47035e-08, 1, 0, -1, -4.47035e-08, -0.1, 0, 0.3)
 operation = 2
 sides = 20
 
-[node name="Player" parent="." instance=ExtResource("1_lhppi")]
-transform = Transform3D(0.173648, 0, -0.984808, 0, 1, 0, 0.984808, 0, 0.173648, 0, 0, 0)
+[node name="ProtoController" parent="." instance=ExtResource("1_lhppi")]
+transform = Transform3D(-1, 0, 7.45058e-08, 0, 1, 0, -7.45058e-08, 0, -1, 0, 0, 0)
 input_left = "move_left"
 input_right = "move_right"
 input_forward = "move_up"
 input_back = "move_down"
 
-[node name="Clive" parent="." groups=["npcs"] instance=ExtResource("2_rlhik")]
+[node name="Clive" parent="." instance=ExtResource("2_rlhik")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.3, 1, 0)
 
 [node name="AskedQuestion" parent="." instance=ExtResource("3_holyq")]
@@ -119,7 +107,4 @@ bbcode_enabled = true
 text = "Hi there!"
 fit_content = true
 
-[node name="MusicalMusic" parent="." instance=ExtResource("7_holyq")]
-
-[connection signal="finishedSpeaking" from="Clive" to="." method="_on_clive_finished_speaking"]
 [connection signal="lookingAtClive" from="Clive" to="." method="_on_clive_looking_at_clive"]
