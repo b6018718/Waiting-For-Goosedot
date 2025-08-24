@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgjwd23d4dlkd"]
+
+[ext_resource type="Script" uid="uid://bvo7da35y4xpm" path="res://game/npcs/clive_obj.gd" id="1_pgnvs"]
+
+[node name="NodeClive" type="Node3D"]
+
+[node name="CliveObj" type="CSGCombiner3D" parent="."]
+unique_name_in_owner = true
+use_collision = true
+script = ExtResource("1_pgnvs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CliveObj"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 0)
+size = Vector3(1.4, 1.7, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CliveObj"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.4, 0.5)
+size = Vector3(0.3, 0.2, 0.4)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CliveObj"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.4, 0.5)
+size = Vector3(0.3, 0.2, 0.4)
