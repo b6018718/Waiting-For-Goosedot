@@ -1,53 +1,33 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgjwd23d4dlkd"]
+[gd_scene load_steps=5 format=3 uid="uid://dgjwd23d4dlkd"]
 
 [ext_resource type="Script" uid="uid://dnt5nqn7oha2q" path="res://clive.gd" id="1_io2vo"]
-[ext_resource type="Script" uid="uid://bvo7da35y4xpm" path="res://game/npcs/Clive/clive_obj.gd" id="1_pgnvs"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pgnvs"]
-albedo_color = Color(0.549468, 0.543337, 7.70092e-07, 1)
+[sub_resource type="BoxShape3D" id="BoxShape3D_pgnvs"]
+size = Vector3(1.94023, 1.70767, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_io2vo"]
-albedo_color = Color(0.309804, 0.231373, 0.14902, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_pgnvs"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5it6"]
-albedo_color = Color(0.307983, 0.232605, 0.14935, 1)
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_io2vo"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_io2vo"]
+[sub_resource type="BoxMesh" id="BoxMesh_io2vo"]
 
 [node name="NodeClive" type="CharacterBody3D"]
 script = ExtResource("1_io2vo")
 
-[node name="CliveRectObj" type="CSGCombiner3D" parent="."]
-unique_name_in_owner = true
-visible = false
-use_collision = true
-script = ExtResource("1_pgnvs")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="CliveRectObj"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.55, 0)
-size = Vector3(1.4, 1.7, 1)
-material = SubResource("StandardMaterial3D_pgnvs")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="CliveRectObj"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.35, -0.4, 0.5)
-size = Vector3(0.3, 0.2, 0.4)
-material = SubResource("StandardMaterial3D_io2vo")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="CliveRectObj"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.7, -0.4, 0.5)
-size = Vector3(0.3, 0.2, 0.4)
-material = SubResource("StandardMaterial3D_k5it6")
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_io2vo")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00898442, 1.54495, -0.2)
+shape = SubResource("BoxShape3D_pgnvs")
+debug_color = Color(0.697853, 0.490778, 0.166419, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1, 0.5, -0.1)
-mesh = SubResource("CapsuleMesh_io2vo")
+[node name="CliveMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 2, 0, 2, 0, -1, 0, -8.74228e-08, 0, 1.4, 0)
+mesh = SubResource("BoxMesh_pgnvs")
+
+[node name="Foot1" type="MeshInstance3D" parent="CliveMesh"]
+transform = Transform3D(0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.3, 0.4, -0.55, 0.352794)
+mesh = SubResource("BoxMesh_io2vo")
+
+[node name="Foot2" type="MeshInstance3D" parent="CliveMesh"]
+transform = Transform3D(0.7, 0, 0, 0, 0.2, 0, 0, 0, 0.3, 0.4, -0.55, -0.350073)
+mesh = SubResource("BoxMesh_io2vo")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 debug_enabled = true
-
-[connection signal="lookingAtClive" from="CliveRectObj" to="." method="_on_clive_rect_obj_looking_at_clive"]

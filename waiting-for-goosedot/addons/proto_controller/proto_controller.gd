@@ -80,8 +80,8 @@ func _physics_process(delta: float) -> void:
 	
 	if (%SeeCast.is_colliding()):
 		var target = %SeeCast.get_collider()
-		if target.has_method("interactWithObj"):
-			target.interactWithObj()
+		if target.has_method("insidePlayerRaycast"):
+			target.insidePlayerRaycast()
 	
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:

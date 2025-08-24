@@ -18,5 +18,6 @@ func _on_clive_looking_at_clive(text: String, personName: String) -> void:
 
 func _on_clive_finished_speaking() -> void:
 	if !$MusicalMusic.playing && !self.cliveHasPlayedMusic && !DisplayServer.tts_is_speaking():
+		$Clive.start_moving()
 		self.cliveHasPlayedMusic = true
 		$MusicalMusic.play()
