@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7y70rx5yanva"]
+
+[ext_resource type="Script" uid="uid://dw6x5jm4exq88" path="res://game/npcs/BoxOffice/box_office.gd" id="1_8stl2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7h6am"]
+albedo_color = Color(0.306955, 0.0172074, 2.40654e-08, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="BoxOffice" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.5, 0)
+size = Vector3(2.5, 4, 3)
+material = SubResource("StandardMaterial3D_7h6am")
+script = ExtResource("1_8stl2")

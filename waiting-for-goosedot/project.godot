@@ -23,6 +23,10 @@ general/text_to_speech=true
 
 project/assembly_name="Waiting For Goosedot"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/gut/plugin.cfg")
+
 [global_group]
 
 npcs=""

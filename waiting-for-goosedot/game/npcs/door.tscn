@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://bs7ph6m3d2x6f"]
+
+[ext_resource type="Material" uid="uid://bmirrjqdxejxc" path="res://game/materials/door/door_frame.tres" id="1_nr8dy"]
+[ext_resource type="Material" uid="uid://j1f03f470pcr" path="res://game/materials/door/handle.tres" id="2_af184"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yoh3d"]
+size = Vector3(0.0288086, 2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_i7fnr"]
+
+[sub_resource type="Animation" id="Animation_rbkew"]
+resource_name = "open"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -1.5708, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_nr8dy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yjpf6"]
+_data = {
+&"RESET": SubResource("Animation_nr8dy"),
+&"open": SubResource("Animation_rbkew")
+}
+
+[node name="Door" type="Node3D"]
+
+[node name="Hinge" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hinge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hinge/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0373535, 0.996582, 0)
+shape = SubResource("BoxShape3D_yoh3d")
+
+[node name="DoorMain" type="MeshInstance3D" parent="Hinge/StaticBody3D"]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 1, 0, 1, 0)
+material_override = ExtResource("1_nr8dy")
+mesh = SubResource("BoxMesh_i7fnr")
+
+[node name="DoorHandle" type="MeshInstance3D" parent="Hinge/StaticBody3D"]
+transform = Transform3D(0.2, 0, 0, 0, 0.3, 0, 0, 0, 0.1, -0.00901201, 1, 0.35)
+material_override = ExtResource("2_af184")
+mesh = SubResource("BoxMesh_i7fnr")
+skeleton = NodePath("../../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yjpf6")
+}

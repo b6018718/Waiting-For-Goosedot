@@ -5,6 +5,27 @@
 
 extends CharacterBody3D
 
+
+
+## Custom Code ##
+var userHasTickets = false
+
+func getUserHasTickets():
+	return self.userHasTickets
+	
+func setUserHasTickets(userHasTickets):
+	self.userHasTickets = userHasTickets
+
+func _getSightCollision() -> Object:
+	return %SeeCast.get_collider()
+	
+func checkCollision():
+	var collision = self._getSightCollision()
+	if collision and collision.has_method("insidePlayerRaycast"):
+		collision.insidePlayerRaycast(self)
+
+
+############ Proto Type Code ############
 ## Can we move around?
 @export var can_move : bool = true
 ## Are we affected by gravity?
@@ -77,11 +98,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			disable_freefly()
 
 func _physics_process(delta: float) -> void:
-	
-	if (%SeeCast.is_colliding()):
-		var target = %SeeCast.get_collider()
-		if target.has_method("insidePlayerRaycast"):
-			target.insidePlayerRaycast()
+	self.checkCollision()
 	
 	# If freeflying, handle freefly and nothing else
 	if can_freefly and freeflying:
