@@ -9,6 +9,7 @@ albedo_color = Color(0.306955, 0.0172074, 2.40654e-08, 1)
 
 [node name="BoxOffice" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 2.5, 0)
+use_collision = true
 size = Vector3(2.5, 4, 3)
 material = SubResource("StandardMaterial3D_7h6am")
 script = ExtResource("1_8stl2")

@@ -22,7 +22,7 @@ var speech = [
 func incrementSpeech():
 	self.speechCounter = self.speechCounter + 1
 
-func insidePlayerRaycast():
+func insidePlayerRaycast(_player):
 	if (!self.queue_is_empty()):
 		emit_signal("lookingAtClive", self.speech[self.speechCounter], self.personName)
 	else:

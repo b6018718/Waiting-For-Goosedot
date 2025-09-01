@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://chg7ovr6efbxd"]
+
+[ext_resource type="Script" uid="uid://bqr8ye5xmppif" path="res://game/npcs/DoubleDoors/double_doors.gd" id="1_1hfc1"]
+[ext_resource type="PackedScene" uid="uid://bs7ph6m3d2x6f" path="res://game/npcs/DoubleDoors/Door/door.tscn" id="1_tbre8"]
+[ext_resource type="AudioStream" uid="uid://drtb2v72gbrrr" path="res://game/sound/doorCreak.ogg" id="3_psaey"]
+
+[node name="DoubleDoors" type="Node3D"]
+script = ExtResource("1_1hfc1")
+
+[node name="Door" parent="." instance=ExtResource("1_tbre8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
+
+[node name="Door2" parent="." instance=ExtResource("1_tbre8")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 1)
+
+[node name="CreakSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_psaey")

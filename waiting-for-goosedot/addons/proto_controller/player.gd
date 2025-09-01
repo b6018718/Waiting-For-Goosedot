@@ -5,7 +5,7 @@
 
 extends CharacterBody3D
 
-
+signal playerGotTickets
 
 ## Custom Code ##
 var userHasTickets = false
@@ -14,7 +14,10 @@ func getUserHasTickets():
 	return self.userHasTickets
 	
 func setUserHasTickets(userHasTickets):
+	if (self.getUserHasTickets()):
+		return
 	self.userHasTickets = userHasTickets
+	emit_signal("playerGotTickets")
 
 func _getSightCollision() -> Object:
 	return %SeeCast.get_collider()

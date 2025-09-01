@@ -3,12 +3,22 @@ extends Node3D
 var cliveHasPlayedMusic = false
 
 @onready var player = $Player
+@onready var foyerDoubleDoors = %FoyerDoubleDoors
+@onready var hallwayDoubleDoors = %HallwayDoubleDoors
 
 func _ready() -> void:
 	print('Starting game...')
 	
 func _physics_process(_delta):
 	get_tree().call_group("npcs", "update_target_location", self.player.global_transform.origin)
+	
+func _on_player_player_got_tickets() -> void:
+	self.foyerDoubleDoors.open()
+	self.hallwayDoubleDoors.open()
+	self.foyerDoubleDoors.playSound()
+	
+func areFoyerHallwayDoorsOpen() -> bool:
+	return self.foyerDoubleDoors.isOpen() and self.hallwayDoubleDoors.isOpen()
 
 func _on_clive_looking_at_clive(text: String, personName: String) -> void:
 	var displayedLastFrame = $UI/Dialog.display_line(text, personName)
