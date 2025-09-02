@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dnt5nqn7oha2q" path="res://clive.gd" id="1_io2vo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pgnvs"]
-size = Vector3(1.70796, 1.70767, 0.915527)
+size = Vector3(1.97734, 1.5, 1.12347)
 
 [sub_resource type="BoxMesh" id="BoxMesh_pgnvs"]
 
@@ -13,7 +13,7 @@ size = Vector3(1.70796, 1.70767, 0.915527)
 script = ExtResource("1_io2vo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0285406, 1.54495, -0.157764)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00382817, 1.64878, -0.0675232)
 shape = SubResource("BoxShape3D_pgnvs")
 debug_color = Color(0.697853, 0.490778, 0.166419, 1)
 

@@ -5,6 +5,7 @@ var cliveHasPlayedMusic = false
 @onready var player = $Player
 @onready var foyerDoubleDoors = %FoyerDoubleDoors
 @onready var hallwayDoubleDoors = %HallwayDoubleDoors
+@onready var navRegion = %NavigationRegion3D
 
 func _ready() -> void:
 	print('Starting game...')
@@ -16,6 +17,8 @@ func _on_player_player_got_tickets() -> void:
 	self.foyerDoubleDoors.open()
 	self.hallwayDoubleDoors.open()
 	self.foyerDoubleDoors.playSound()
+	await get_tree().create_timer(5).timeout
+	navRegion.bake_navigation_mesh(0)
 	
 func areFoyerHallwayDoorsOpen() -> bool:
 	return self.foyerDoubleDoors.isOpen() and self.hallwayDoubleDoors.isOpen()

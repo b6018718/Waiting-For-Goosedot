@@ -8,6 +8,11 @@ Credits
 Director
 Anthony Dranfield
 
+Music
+
+Chant Nightcore (Hades Town) by MysticDragon14
+https://www.youtube.com/watch?v=-GfjJRFYaMw
+
 Sound Effects
 
 Wooden door squeak 1 by Sandermotions
